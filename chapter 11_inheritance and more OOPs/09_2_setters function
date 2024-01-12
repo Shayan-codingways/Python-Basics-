@@ -1,0 +1,32 @@
+'''setters function'''
+class Employee:
+    company="Engro"
+    salary=3000
+    salaryBonus=500
+    # totalSalary=3330+444 (how to avoid hardcore by property decorator)
+    
+    '''below function acts a property not function'''
+    @property
+    def totalsalary(self):
+        a=self.salary+self.salaryBonus
+        return a
+    
+    @totalsalary.setter
+    def totalsalary(self,sal):
+       self.sal=sal
+       self.salaryBonus=self.sal-self.salary
+
+e=Employee()
+
+a=e.totalsalary #(it's a property now so we can write function() instead we'll write (e.totalsalary)
+print(a)
+
+print("\n")
+
+# * chaninging value of total salary
+# so we need to change either salary or bonus
+# so setter function is used
+e.totalsalary=5500  # can only change returning value (passed in sal)
+print(e.salary)
+print(e.salaryBonus)
+

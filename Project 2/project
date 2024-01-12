@@ -1,0 +1,53 @@
+
+'''created random number --- hidden for users'''
+import random
+randno=random.randint(1,101)
+
+
+'''game begins'''
+print("Hello Player - Guess the number")
+
+
+player_guess=None # takes it to enter loop
+guess_no=0
+
+# initialize loop
+while player_guess != randno:
+
+    '''takes input untill value equal'''
+    player_guess=int(input("Enter your number please [0-100]:"))
+
+    # validation
+    if player_guess>100 or player_guess<0:
+       print("You exceeded the range")
+       continue # won't display message of higher or lower (directly moves on to nxt entry)
+    else:
+       guess_no+=1
+     
+    '''messages and results evaluation''' 
+    if (player_guess==randno):
+        if(guess_no<=3):
+            print("well done player you did great!")
+        else:
+            print("you did it! but not a great effort")
+            print(f"it took you {guess_no} guesses")
+
+    elif(player_guess<randno):
+        print("your number is lower, guess a bit higher")
+
+    else:
+        print("your number is higher, guess a bit lower")
+ 
+                 
+'''checking for highscore'''
+'''checking for highscore'''
+with open ('high-score.txt','r') as f:
+    hiscore=int(f.read())  # int to compare 
+ 
+if (guess_no<hiscore):
+    print("you broke the record")
+    with open ('high-score.txt','w') as f:
+        f.write(str(guess_no)) # string to write
+
+
+    
